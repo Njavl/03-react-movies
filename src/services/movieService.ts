@@ -1,9 +1,12 @@
 import axios from 'axios';
+import type { Movie } from '../types/movie';
 
 const Token = import.meta.env.VITE_TMDB_TOKEN;
 
-function getMovies(query: string) {
-  return axios({
+async function getMovies(query: string): Promise<Movie[]> {
+  const { data } = await axios<{
+    results: Movie[];
+  }>({
     method: 'GET',
     url: 'https://api.themoviedb.org/3/search/movie',
     headers: {
@@ -13,5 +16,7 @@ function getMovies(query: string) {
       query: query,
     },
   });
+
+  return data.results;
 }
 export default getMovies;

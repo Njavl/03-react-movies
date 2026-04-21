@@ -21,17 +21,16 @@ function App() {
     setSelectedMovie(null);
   }
 
-  async function handleSearch(formData: FormData) {
+  async function handleSearch(query: string) {
     try {
       setError(false);
       setMovies([]);
       setIsLoading(true);
-      const query = formData.get('query') as string;
       const response = await getMovies(query);
-      if (response.data.results.length == 0) {
+      if (response.length <= 0) {
         toast.error('No movies found for your request.');
       }
-      setMovies(response.data.results);
+      setMovies(response);
     } catch (error) {
       setError(true);
       console.log(error);
