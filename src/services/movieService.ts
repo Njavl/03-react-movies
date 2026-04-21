@@ -10,7 +10,7 @@ async function getMovies(query: string): Promise<Movie[]> {
     method: 'GET',
     url: 'https://api.themoviedb.org/3/search/movie',
     headers: {
-      Authorization: `Bearer  ${Token}`,
+      Authorization: `Bearer ${Token}`,
     },
     params: {
       query: query,

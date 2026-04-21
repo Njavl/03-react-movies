@@ -55,7 +55,7 @@ function MovieModal({ movie, onClose }: MovieModalProps) {
         />
         <div className={css.content}>
           <h2>{movie.title}</h2>
-          <p></p>
+          <p>{movie.overview}</p>
           <p>
             <strong>Release Date:</strong> {movie.release_date}
           </p>
